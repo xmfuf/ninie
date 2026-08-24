@@ -4,928 +4,1108 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>مصادر الوثائق القانونية — المملكة العربية السعودية</title>
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
 <style>
-  /* ── tokens ──────────────────────────────────────────────── */
-  :root {
-    --navy:   #0C2340;
-    --blue:   #185FA5;
-    --blue2:  #1A72C4;
-    --lt-blue:#E6F1FB;
-    --teal:   #0F6E56;
-    --lt-teal:#E1F5EE;
-    --amber:  #854F0B;
-    --lt-amb: #FAEEDA;
-    --purp:   #4037A6;
-    --lt-pur: #EEEDFE;
-    --coral:  #993C1D;
-    --lt-cor: #FAECE7;
-    --text:   #1A1A1A;
-    --muted:  #5F5E5A;
-    --border: #E3E1D9;
-    --bg:     #F8F7F4;
-    --white:  #FFFFFF;
-    --gold:   #C8981A;
-  }
 
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+/* ═══════════════════════════════════════
+   TOKENS
+═══════════════════════════════════════ */
+:root {
+  --green-900: #0D2B1F;
+  --green-800: #1B4332;
+  --green-700: #2D6A4F;
+  --green-600: #40916C;
+  --green-100: #D8F3DC;
+  --green-50:  #F0FBF2;
+  --gold:      #9A7D2E;
+  --gold-lt:   #F5EDD5;
+  --text:      #111111;
+  --text-2:    #3D3D3D;
+  --text-3:    #767676;
+  --border:    #DDE8E2;
+  --bg:        #F7FAF8;
+  --white:     #FFFFFF;
+  --radius:    10px;
+  --shadow-sm: 0 1px 3px rgba(0,0,0,.07);
+  --shadow-md: 0 4px 16px rgba(0,0,0,.09);
+  --shadow-lg: 0 8px 32px rgba(0,0,0,.12);
+  --font: 'Cairo', sans-serif;
+}
 
-  body {
-    font-family: 'IBM Plex Sans Arabic', system-ui, sans-serif;
-    background: var(--bg);
-    color: var(--text);
-    line-height: 1.6;
-  }
+/* ═══════════════════════════════════════
+   RESET
+═══════════════════════════════════════ */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { font-family: var(--font); background: var(--bg); color: var(--text); line-height: 1.7; -webkit-font-smoothing: antialiased; }
+a { text-decoration: none; color: inherit; }
+button { font-family: var(--font); cursor: pointer; border: none; background: none; }
+img { display: block; max-width: 100%; }
 
-  /* ── HEADER ─────────────────────────────────────────────── */
-  .site-header {
-    background: var(--navy);
-    position: sticky;
-    top: 0;
-    z-index: 100;
-    box-shadow: 0 2px 16px rgba(0,0,0,.25);
-  }
-  .header-inner {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 24px;
-    height: 60px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
-  .logo {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    text-decoration: none;
-  }
-  .logo-emblem {
-    width: 36px;
-    height: 36px;
-    background: var(--gold);
-    border-radius: 8px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 18px;
-    flex-shrink: 0;
-  }
-  .logo-text {
-    color: var(--white);
-    font-size: 15px;
-    font-weight: 600;
-    letter-spacing: .01em;
-  }
-  .logo-sub {
-    color: rgba(255,255,255,.5);
-    font-size: 11px;
-    font-weight: 300;
-  }
-  nav {
-    display: flex;
-    gap: 6px;
-    align-items: center;
-  }
-  nav a {
-    color: rgba(255,255,255,.75);
-    text-decoration: none;
-    font-size: 13px;
-    padding: 6px 12px;
-    border-radius: 6px;
-    transition: all .15s;
-  }
-  nav a:hover { background: rgba(255,255,255,.1); color: var(--white); }
+/* ═══════════════════════════════════════
+   LAYOUT
+═══════════════════════════════════════ */
+.container { max-width: 1160px; margin: 0 auto; padding: 0 24px; }
 
-  /* ── HERO ────────────────────────────────────────────────── */
-  .hero {
-    background: linear-gradient(145deg, var(--navy) 0%, #1B3A66 60%, #0F4D3A 100%);
-    padding: 72px 24px 56px;
-    text-align: center;
-    position: relative;
-    overflow: hidden;
-  }
-  .hero::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E") repeat;
-  }
-  .hero-badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    background: rgba(200,152,26,.15);
-    border: 1px solid rgba(200,152,26,.35);
-    color: var(--gold);
-    font-size: 11px;
-    padding: 4px 12px;
-    border-radius: 20px;
-    margin-bottom: 20px;
-    position: relative;
-  }
-  .hero h1 {
-    color: var(--white);
-    font-size: clamp(26px, 4vw, 44px);
-    font-weight: 600;
-    line-height: 1.25;
-    max-width: 700px;
-    margin: 0 auto 16px;
-    position: relative;
-  }
-  .hero h1 span { color: var(--gold); }
-  .hero p {
-    color: rgba(255,255,255,.65);
-    font-size: 15px;
-    max-width: 520px;
-    margin: 0 auto 32px;
-    font-weight: 300;
-    position: relative;
-  }
-  .search-wrap {
-    max-width: 540px;
-    margin: 0 auto;
-    position: relative;
-  }
-  .search-wrap input {
-    width: 100%;
-    padding: 14px 48px 14px 110px;
-    font-family: inherit;
-    font-size: 14px;
-    border: none;
-    border-radius: 12px;
-    outline: none;
-    background: var(--white);
-    color: var(--text);
-    box-shadow: 0 4px 24px rgba(0,0,0,.2);
-  }
-  .search-wrap input::placeholder { color: #aaa; }
-  .search-icon {
-    position: absolute;
-    right: 16px;
-    top: 50%;
-    transform: translateY(-50%);
-    color: var(--muted);
-    font-size: 18px;
-    pointer-events: none;
-  }
-  .search-btn {
-    position: absolute;
-    left: 6px;
-    top: 50%;
-    transform: translateY(-50%);
-    background: var(--blue);
-    color: var(--white);
-    border: none;
-    border-radius: 8px;
-    padding: 8px 16px;
-    font-family: inherit;
-    font-size: 13px;
-    cursor: pointer;
-    transition: background .15s;
-  }
-  .search-btn:hover { background: var(--blue2); }
+/* ═══════════════════════════════════════
+   HEADER
+═══════════════════════════════════════ */
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 200;
+  background: var(--green-800);
+  border-bottom: 3px solid var(--gold);
+}
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 64px;
+}
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.logo-icon {
+  width: 40px;
+  height: 40px;
+  background: var(--gold);
+  border-radius: 8px;
+  display: grid;
+  place-items: center;
+}
+.logo-icon svg { width: 22px; height: 22px; fill: var(--white); }
+.logo-name {
+  color: var(--white);
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: -.01em;
+}
+.logo-tagline {
+  color: rgba(255,255,255,.5);
+  font-size: 11px;
+  font-weight: 300;
+  margin-top: -2px;
+}
+.nav {
+  display: flex;
+  gap: 2px;
+}
+.nav a {
+  color: rgba(255,255,255,.7);
+  font-size: 13px;
+  font-weight: 500;
+  padding: 7px 14px;
+  border-radius: 7px;
+  transition: background .15s, color .15s;
+}
+.nav a:hover { background: rgba(255,255,255,.08); color: var(--white); }
 
-  /* ── STATS BAR ───────────────────────────────────────────── */
-  .stats-bar {
-    background: var(--white);
-    border-bottom: 1px solid var(--border);
-  }
-  .stats-inner {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 24px;
-    display: flex;
-    align-items: stretch;
-    justify-content: center;
-  }
-  .stat-item {
-    padding: 18px 32px;
-    text-align: center;
-    border-left: 1px solid var(--border);
-    flex: 1;
-  }
-  .stat-item:last-child { border-left: none; }
-  .stat-num {
-    font-size: 22px;
-    font-weight: 600;
-    color: var(--blue);
-    display: block;
-  }
-  .stat-lbl {
-    font-size: 11px;
-    color: var(--muted);
-    margin-top: 2px;
-  }
+/* ═══════════════════════════════════════
+   HERO
+═══════════════════════════════════════ */
+.hero {
+  background: var(--green-800);
+  padding: 64px 0 80px;
+  position: relative;
+  overflow: hidden;
+}
+/* geometric pattern overlay */
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  opacity: .06;
+  background-image:
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 39px,
+      rgba(255,255,255,.8) 39px,
+      rgba(255,255,255,.8) 40px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      transparent,
+      transparent 39px,
+      rgba(255,255,255,.8) 39px,
+      rgba(255,255,255,.8) 40px
+    );
+  pointer-events: none;
+}
+.hero::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  left: 0; right: 0;
+  height: 60px;
+  background: var(--bg);
+  clip-path: ellipse(55% 100% at 50% 100%);
+}
+.hero-inner {
+  position: relative;
+  text-align: center;
+}
+.hero-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255,255,255,.08);
+  border: 1px solid rgba(255,255,255,.14);
+  color: rgba(255,255,255,.8);
+  font-size: 12px;
+  font-weight: 500;
+  padding: 5px 16px;
+  border-radius: 20px;
+  margin-bottom: 24px;
+  letter-spacing: .02em;
+}
+.hero-eyebrow span { color: var(--gold); }
+.hero h1 {
+  color: var(--white);
+  font-size: clamp(28px, 4.5vw, 48px);
+  font-weight: 700;
+  line-height: 1.2;
+  max-width: 680px;
+  margin: 0 auto 16px;
+}
+.hero h1 em {
+  font-style: normal;
+  color: var(--gold);
+  position: relative;
+}
+.hero-sub {
+  color: rgba(255,255,255,.55);
+  font-size: 15px;
+  font-weight: 300;
+  max-width: 500px;
+  margin: 0 auto 36px;
+}
 
-  /* ── MAIN ────────────────────────────────────────────────── */
-  main {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 48px 24px;
-  }
+/* search */
+.search-box {
+  max-width: 560px;
+  margin: 0 auto;
+  position: relative;
+}
+.search-box input {
+  width: 100%;
+  height: 52px;
+  padding: 0 52px 0 130px;
+  font-family: var(--font);
+  font-size: 14px;
+  background: var(--white);
+  border: 1.5px solid transparent;
+  border-radius: 12px;
+  color: var(--text);
+  box-shadow: var(--shadow-lg);
+  outline: none;
+  transition: border-color .2s;
+}
+.search-box input:focus { border-color: var(--green-600); }
+.search-box input::placeholder { color: #aaa; }
+.search-ico {
+  position: absolute;
+  right: 18px;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+  color: var(--text-3);
+}
+.search-ico svg { width: 18px; height: 18px; stroke: currentColor; fill: none; stroke-width: 2; }
+.search-btn {
+  position: absolute;
+  left: 6px;
+  top: 6px;
+  height: 40px;
+  padding: 0 18px;
+  background: var(--green-700);
+  color: var(--white);
+  font-family: var(--font);
+  font-size: 13px;
+  font-weight: 600;
+  border-radius: 8px;
+  transition: background .15s;
+}
+.search-btn:hover { background: var(--green-600); }
 
-  /* filter tabs */
-  .filter-row {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    margin-bottom: 32px;
-    flex-wrap: wrap;
-  }
-  .filter-label {
-    font-size: 12px;
-    color: var(--muted);
-    margin-left: 4px;
-  }
-  .tab {
-    padding: 7px 16px;
-    border-radius: 20px;
-    border: 1px solid var(--border);
-    background: var(--white);
-    font-family: inherit;
-    font-size: 12px;
-    color: var(--muted);
-    cursor: pointer;
-    transition: all .15s;
-  }
-  .tab:hover { border-color: var(--blue); color: var(--blue); }
-  .tab.active { background: var(--navy); color: var(--white); border-color: var(--navy); }
+/* ═══════════════════════════════════════
+   STATS STRIP
+═══════════════════════════════════════ */
+.stats-strip {
+  background: var(--white);
+  border-bottom: 1px solid var(--border);
+  margin-top: -1px;
+}
+.stats-inner {
+  display: flex;
+  align-items: stretch;
+}
+.stat {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px 12px;
+  border-left: 1px solid var(--border);
+  gap: 2px;
+}
+.stat:last-child { border-left: none; }
+.stat-n {
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--green-800);
+}
+.stat-l {
+  font-size: 11px;
+  color: var(--text-3);
+  font-weight: 400;
+  text-align: center;
+}
 
-  /* section heading */
-  .section-head {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    margin-bottom: 20px;
-    margin-top: 8px;
-  }
-  .section-icon {
-    width: 32px;
-    height: 32px;
-    border-radius: 8px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 16px;
-    flex-shrink: 0;
-  }
-  .section-head h2 {
-    font-size: 16px;
-    font-weight: 600;
-    color: var(--navy);
-  }
-  .section-head p {
-    font-size: 12px;
-    color: var(--muted);
-  }
+/* ═══════════════════════════════════════
+   MAIN CONTENT
+═══════════════════════════════════════ */
+.main { padding: 52px 0 64px; }
 
-  /* cards grid */
-  .cards-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 16px;
-    margin-bottom: 48px;
-  }
-  .card {
-    background: var(--white);
-    border: 1px solid var(--border);
-    border-radius: 14px;
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    transition: box-shadow .2s, transform .2s, border-color .2s;
-    cursor: pointer;
-    text-decoration: none;
-    color: inherit;
-    position: relative;
-    overflow: hidden;
-  }
-  .card::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    border-radius: 14px;
-    opacity: 0;
-    transition: opacity .2s;
-  }
-  .card:hover {
-    box-shadow: 0 8px 32px rgba(0,0,0,.1);
-    transform: translateY(-2px);
-    border-color: var(--blue);
-  }
-  .card.featured {
-    border-color: var(--blue);
-    box-shadow: 0 0 0 3px rgba(24,95,165,.1);
-  }
-  .card-head {
-    display: flex;
-    align-items: flex-start;
-    justify-content: space-between;
-    gap: 10px;
-  }
-  .card-icon {
-    width: 42px;
-    height: 42px;
-    border-radius: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 20px;
-    flex-shrink: 0;
-  }
-  .badge {
-    font-size: 10px;
-    font-weight: 500;
-    padding: 3px 9px;
-    border-radius: 20px;
-    white-space: nowrap;
-  }
-  .badge-official { background: var(--lt-teal); color: var(--teal); }
-  .badge-platform { background: var(--lt-pur);  color: var(--purp); }
-  .badge-ai       { background: var(--lt-amb);  color: var(--amber);}
-  .card-title {
-    font-size: 15px;
-    font-weight: 600;
-    color: var(--navy);
-    line-height: 1.3;
-  }
-  .card-en {
-    font-size: 11px;
-    color: var(--muted);
-    margin-top: 1px;
-    font-weight: 300;
-  }
-  .card-desc {
-    font-size: 13px;
-    color: var(--muted);
-    line-height: 1.6;
-    flex: 1;
-  }
-  .card-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 5px;
-  }
-  .tag {
-    font-size: 10px;
-    padding: 2px 8px;
-    border-radius: 20px;
-    background: var(--bg);
-    color: var(--muted);
-    border: 1px solid var(--border);
-  }
-  .card-footer {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding-top: 12px;
-    border-top: 1px solid var(--border);
-    margin-top: auto;
-  }
-  .card-url {
-    font-size: 11px;
-    color: var(--muted);
-    direction: ltr;
-    font-weight: 300;
-  }
-  .visit-btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 5px;
-    font-size: 12px;
-    font-weight: 500;
-    color: var(--blue);
-    text-decoration: none;
-    padding: 5px 12px;
-    border-radius: 7px;
-    background: var(--lt-blue);
-    transition: background .15s;
-  }
-  .visit-btn:hover { background: #d2e8f9; }
+/* filter row */
+.filter-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 36px;
+  flex-wrap: wrap;
+}
+.filter-lbl {
+  font-size: 12px;
+  color: var(--text-3);
+  font-weight: 500;
+  margin-left: 6px;
+}
+.chip {
+  height: 34px;
+  padding: 0 16px;
+  border-radius: 20px;
+  border: 1.5px solid var(--border);
+  background: var(--white);
+  font-family: var(--font);
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--text-3);
+  transition: all .15s;
+}
+.chip:hover { border-color: var(--green-700); color: var(--green-700); }
+.chip.on { background: var(--green-800); color: var(--white); border-color: var(--green-800); }
 
-  /* ── DIVIDER ─────────────────────────────────────────────── */
-  .divider {
-    height: 1px;
-    background: var(--border);
-    margin: 8px 0 40px;
-  }
+/* section header */
+.sec-hd {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  padding-bottom: 14px;
+  border-bottom: 1.5px solid var(--border);
+}
+.sec-hd-left { display: flex; align-items: center; gap: 12px; }
+.sec-dot {
+  width: 4px;
+  height: 36px;
+  border-radius: 4px;
+  background: var(--green-700);
+  flex-shrink: 0;
+}
+.sec-title {
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--green-900);
+}
+.sec-sub {
+  font-size: 12px;
+  color: var(--text-3);
+  font-weight: 400;
+  margin-top: 1px;
+}
+.sec-count {
+  font-size: 12px;
+  color: var(--text-3);
+  background: var(--bg);
+  border: 1px solid var(--border);
+  padding: 4px 10px;
+  border-radius: 20px;
+}
 
-  /* ── NO RESULTS ──────────────────────────────────────────── */
-  #no-results {
-    display: none;
-    text-align: center;
-    padding: 48px 24px;
-    color: var(--muted);
-    font-size: 14px;
-  }
+/* cards grid */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 16px;
+  margin-bottom: 52px;
+}
 
-  /* ── FOOTER ──────────────────────────────────────────────── */
-  .site-footer {
-    background: var(--navy);
-    color: rgba(255,255,255,.55);
-    text-align: center;
-    padding: 28px 24px;
-    font-size: 12px;
-    font-weight: 300;
-  }
-  .site-footer strong { color: var(--gold); font-weight: 500; }
+/* card */
+.card {
+  display: flex;
+  flex-direction: column;
+  background: var(--white);
+  border: 1.5px solid var(--border);
+  border-radius: 14px;
+  overflow: hidden;
+  transition: box-shadow .2s, transform .2s, border-color .2s;
+}
+.card:hover {
+  box-shadow: var(--shadow-lg);
+  transform: translateY(-3px);
+  border-color: var(--green-600);
+}
+.card-top {
+  padding: 22px 22px 16px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.card-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.card-ico {
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+}
+.card-ico svg { width: 22px; height: 22px; }
+.pill {
+  font-size: 10px;
+  font-weight: 600;
+  padding: 3px 10px;
+  border-radius: 20px;
+  letter-spacing: .03em;
+  text-transform: uppercase;
+}
+.pill-gov  { background: var(--green-100); color: var(--green-800); }
+.pill-plat { background: #E8E7FC; color: #3B35A8; }
+.pill-ai   { background: var(--gold-lt);  color: var(--gold); }
+.card-body {}
+.card-name {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--green-900);
+  margin-bottom: 2px;
+  line-height: 1.3;
+}
+.card-en {
+  font-size: 11px;
+  color: var(--text-3);
+  font-weight: 400;
+  direction: ltr;
+  text-align: right;
+}
+.card-desc {
+  font-size: 13px;
+  color: var(--text-2);
+  line-height: 1.7;
+  font-weight: 400;
+}
+.card-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+.tag {
+  font-size: 10px;
+  font-weight: 500;
+  padding: 3px 9px;
+  border-radius: 5px;
+  background: var(--bg);
+  color: var(--text-3);
+  border: 1px solid var(--border);
+}
 
-  /* ── RESPONSIVE ──────────────────────────────────────────── */
-  @media (max-width: 640px) {
-    .stats-inner { flex-direction: column; }
-    .stat-item { border-left: none; border-bottom: 1px solid var(--border); padding: 14px 24px; }
-    .stat-item:last-child { border-bottom: none; }
-    nav { display: none; }
-    .cards-grid { grid-template-columns: 1fr; }
-  }
+/* card footer */
+.card-ft {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 13px 22px;
+  border-top: 1px solid var(--border);
+  background: var(--bg);
+}
+.card-url {
+  font-size: 11px;
+  color: var(--text-3);
+  direction: ltr;
+  font-weight: 400;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.card-url svg { width: 13px; height: 13px; stroke: currentColor; fill: none; stroke-width: 2; opacity: .5; }
+.visit {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--green-800);
+  background: var(--green-50);
+  border: 1.5px solid var(--green-100);
+  padding: 6px 14px;
+  border-radius: 7px;
+  transition: background .15s, border-color .15s;
+  cursor: pointer;
+}
+.visit:hover { background: var(--green-100); border-color: var(--green-600); }
+.visit svg { width: 12px; height: 12px; stroke: currentColor; fill: none; stroke-width: 2.5; }
 
-  /* hidden for JS filter */
-  .card-section { transition: opacity .2s; }
-  .card-section.hidden { display: none; }
-  .card.hidden { display: none; }
+/* ═══════════════════════════════════════
+   DIVIDER
+═══════════════════════════════════════ */
+.divider { height: 1px; background: var(--border); margin: 0 0 44px; }
+
+/* ═══════════════════════════════════════
+   ABOUT BAND
+═══════════════════════════════════════ */
+.about-band {
+  background: var(--white);
+  border: 1.5px solid var(--border);
+  border-radius: 14px;
+  padding: 28px 32px;
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+}
+.about-icon {
+  width: 44px;
+  height: 44px;
+  background: var(--green-50);
+  border: 1.5px solid var(--green-100);
+  border-radius: 10px;
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+}
+.about-icon svg { width: 22px; height: 22px; stroke: var(--green-700); fill: none; stroke-width: 1.8; }
+.about-title { font-size: 14px; font-weight: 700; color: var(--green-900); margin-bottom: 6px; }
+.about-text { font-size: 13px; color: var(--text-2); line-height: 1.8; max-width: 640px; }
+
+/* ═══════════════════════════════════════
+   EMPTY STATE
+═══════════════════════════════════════ */
+.empty {
+  display: none;
+  text-align: center;
+  padding: 60px 24px;
+}
+.empty svg { width: 48px; height: 48px; stroke: var(--border); fill: none; stroke-width: 1.5; margin: 0 auto 16px; }
+.empty p { font-size: 14px; color: var(--text-3); }
+
+/* ═══════════════════════════════════════
+   FOOTER
+═══════════════════════════════════════ */
+.footer {
+  background: var(--green-900);
+  border-top: 3px solid var(--gold);
+}
+.footer-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 24px 0;
+}
+.footer-logo { display: flex; align-items: center; gap: 10px; }
+.footer-logo-name { color: var(--white); font-size: 14px; font-weight: 600; }
+.footer-logo-sub  { color: rgba(255,255,255,.35); font-size: 11px; }
+.footer-copy { font-size: 11px; color: rgba(255,255,255,.35); text-align: left; }
+.footer-copy strong { color: rgba(255,255,255,.6); font-weight: 500; }
+
+/* ═══════════════════════════════════════
+   HIDDEN / RESPONSIVE
+═══════════════════════════════════════ */
+.card.hide { display: none; }
+.sec-block.hide { display: none; }
+
+@media (max-width: 720px) {
+  .nav { display: none; }
+  .stats-inner { flex-wrap: wrap; }
+  .stat { min-width: 50%; border-bottom: 1px solid var(--border); }
+  .grid { grid-template-columns: 1fr; }
+  .hero h1 { font-size: 26px; }
+  .footer-inner { flex-direction: column; gap: 16px; text-align: center; }
+  .footer-copy { text-align: center; }
+  .about-band { flex-direction: column; }
+}
 </style>
 </head>
 <body>
 
-<!-- ══════════════════ HEADER ══════════════════ -->
-<header class="site-header" role="banner">
-  <div class="header-inner">
-    <a href="#" class="logo" aria-label="الصفحة الرئيسية">
-      <div class="logo-emblem" aria-hidden="true">⚖</div>
-      <div>
-        <div class="logo-text">مصادر قانونية</div>
-        <div class="logo-sub">المملكة العربية السعودية</div>
+<!-- ════════ HEADER ════════ -->
+<header class="header">
+  <div class="container">
+    <div class="header-inner">
+      <div class="logo">
+        <div class="logo-icon">
+          <svg viewBox="0 0 24 24"><path d="M12 2L3 7v10l9 5 9-5V7L12 2zM12 17l-5-2.8V9.8L12 12l5-2.2v4.4L12 17z"/></svg>
+        </div>
+        <div>
+          <div class="logo-name">دليل المصادر القانونية</div>
+          <div class="logo-tagline">المملكة العربية السعودية</div>
+        </div>
       </div>
-    </a>
-    <nav role="navigation" aria-label="التنقل الرئيسي">
-      <a href="#official">الجهات الرسمية</a>
-      <a href="#platforms">المنصات</a>
-      <a href="#about">عن الدليل</a>
-    </nav>
+      <nav class="nav">
+        <a href="#gov">الجهات الرسمية</a>
+        <a href="#platforms">المنصات</a>
+        <a href="#about">عن الدليل</a>
+      </nav>
+    </div>
   </div>
 </header>
 
-<!-- ══════════════════ HERO ══════════════════ -->
-<section class="hero" aria-labelledby="hero-title">
-  <div class="hero-badge" aria-label="محدّث يونيو 2026">
-    <span aria-hidden="true">🇸🇦</span> دليل الوثائق القانونية المحدّث — 2026
-  </div>
-  <h1 id="hero-title">
-    جميع <span>مصادر الوثائق القانونية</span><br/>في مكان واحد
-  </h1>
-  <p>دليل شامل للمراجع التشريعية والقضائية الرسمية والمنصات القانونية المتخصصة في المملكة العربية السعودية</p>
+<!-- ════════ HERO ════════ -->
+<section class="hero">
+  <div class="container hero-inner">
+    <div class="hero-eyebrow">
+      <span>🇸🇦</span> دليل موثّق ومحدَّث — يونيو 2026
+    </div>
+    <h1>الوثائق القانونية السعودية<br/><em>جميع المصادر في مكان واحد</em></h1>
+    <p class="hero-sub">دليل الجهات الحكومية الرسمية والمنصات القانونية المتخصصة في المملكة العربية السعودية</p>
 
-  <div class="search-wrap" role="search">
-    <span class="search-icon" aria-hidden="true">🔍</span>
-    <label for="search-input" class="sr-only" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0)">ابحث في المصادر</label>
-    <input id="search-input" type="search" placeholder="ابحث: نظام العمل، أحكام قضائية، معاهدات..." autocomplete="off" oninput="filterAll(this.value)" />
-    <button class="search-btn" onclick="filterAll(document.getElementById('search-input').value)">بحث</button>
+    <div class="search-box">
+      <div class="search-ico">
+        <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+      </div>
+      <input id="q" type="search" placeholder="ابحث: نظام العمل، أحكام قضائية، شركات..." autocomplete="off" oninput="run()" />
+      <button class="search-btn" onclick="run()">بحث</button>
+    </div>
   </div>
 </section>
 
-<!-- ══════════════════ STATS BAR ══════════════════ -->
-<div class="stats-bar" role="region" aria-label="إحصاءات سريعة">
-  <div class="stats-inner">
-    <div class="stat-item">
-      <span class="stat-num">12</span>
-      <div class="stat-lbl">مصدراً موثقاً</div>
-    </div>
-    <div class="stat-item">
-      <span class="stat-num">+170K</span>
-      <div class="stat-lbl">وثيقة قانونية</div>
-    </div>
-    <div class="stat-item">
-      <span class="stat-num">7</span>
-      <div class="stat-lbl">جهات حكومية رسمية</div>
-    </div>
-    <div class="stat-item">
-      <span class="stat-num">5</span>
-      <div class="stat-lbl">منصات متخصصة</div>
-    </div>
-    <div class="stat-item">
-      <span class="stat-num">12</span>
-      <div class="stat-lbl">تصنيفاً قانونياً</div>
+<!-- ════════ STATS ════════ -->
+<div class="stats-strip">
+  <div class="container">
+    <div class="stats-inner">
+      <div class="stat"><span class="stat-n">12</span><span class="stat-l">مصدراً موثّقاً</span></div>
+      <div class="stat"><span class="stat-n">+170K</span><span class="stat-l">وثيقة قانونية</span></div>
+      <div class="stat"><span class="stat-n">7</span><span class="stat-l">جهات حكومية</span></div>
+      <div class="stat"><span class="stat-n">5</span><span class="stat-l">منصات متخصصة</span></div>
+      <div class="stat"><span class="stat-n">12</span><span class="stat-l">تصنيفاً قانونياً</span></div>
     </div>
   </div>
 </div>
 
-<!-- ══════════════════ MAIN ══════════════════ -->
-<main id="main-content">
+<!-- ════════ MAIN ════════ -->
+<main class="main">
+  <div class="container">
 
-  <!-- Filter tabs -->
-  <div class="filter-row" role="group" aria-label="تصفية المصادر">
-    <span class="filter-label">تصفية:</span>
-    <button class="tab active" onclick="setTab(this,'all')" aria-pressed="true">الكل</button>
-    <button class="tab" onclick="setTab(this,'official')" aria-pressed="false">🏛 حكومية رسمية</button>
-    <button class="tab" onclick="setTab(this,'platform')" aria-pressed="false">💻 منصات</button>
-    <button class="tab" onclick="setTab(this,'ai')" aria-pressed="false">🤖 بذكاء اصطناعي</button>
-  </div>
+    <!-- filter chips -->
+    <div class="filter-row">
+      <span class="filter-lbl">عرض:</span>
+      <button class="chip on"  onclick="tab(this,'all')">الكل</button>
+      <button class="chip"     onclick="tab(this,'gov')">🏛 حكومية رسمية</button>
+      <button class="chip"     onclick="tab(this,'plat')">💻 منصات</button>
+      <button class="chip"     onclick="tab(this,'ai')">✦ بذكاء اصطناعي</button>
+    </div>
 
-  <!-- ── SECTION 1: Official ── -->
-  <div id="official" class="card-section" data-section="official">
-    <div class="section-head">
-      <div class="section-icon" style="background:#E6F1FB; color:#185FA5;" aria-hidden="true">🏛</div>
+    <!-- ── SECTION: GOV ── -->
+    <div id="gov" class="sec-block" data-sec="gov">
+      <div class="sec-hd">
+        <div class="sec-hd-left">
+          <div class="sec-dot"></div>
+          <div>
+            <div class="sec-title">الجهات الحكومية الرسمية</div>
+            <div class="sec-sub">مصادر أولية موثوقة صادرة مباشرة عن الجهات التشريعية والقضائية</div>
+          </div>
+        </div>
+        <span class="sec-count">7 مصادر</span>
+      </div>
+
+      <div class="grid">
+
+        <div class="card" data-cat="gov" data-kw="هيئة الخبراء مجلس الوزراء أنظمة تنظيمات ترجمة رسمية تشريع">
+          <div class="card-top">
+            <div class="card-meta">
+              <div class="card-ico" style="background:#E8F5EC;">
+                <svg viewBox="0 0 24 24" fill="none" stroke="#1B4332" stroke-width="1.8"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+              </div>
+              <span class="pill pill-gov">رسمي</span>
+            </div>
+            <div class="card-body">
+              <div class="card-name">هيئة الخبراء بمجلس الوزراء</div>
+              <div class="card-en">Bureau of Experts at the Council of Ministers</div>
+            </div>
+            <div class="card-desc">المصدر الأول للأنظمة والتنظيمات وترجماتها الرسمية إلى الإنجليزية. المرجع المعتمد لجميع الباحثين والمختصين.</div>
+            <div class="card-tags">
+              <span class="tag">أنظمة</span>
+              <span class="tag">لوائح</span>
+              <span class="tag">ترجمة رسمية</span>
+            </div>
+          </div>
+          <div class="card-ft">
+            <span class="card-url">
+              <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+              laws.boe.gov.sa
+            </span>
+            <a href="https://laws.boe.gov.sa" target="_blank" rel="noopener" class="visit">
+              زيارة الموقع
+              <svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <div class="card" data-cat="gov" data-kw="المنصة الوطنية أنظمة لوائح وزارات مجلس وزراء قرارات حكومية">
+          <div class="card-top">
+            <div class="card-meta">
+              <div class="card-ico" style="background:#E8F5EC;">
+                <svg viewBox="0 0 24 24" fill="none" stroke="#1B4332" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+              </div>
+              <span class="pill pill-gov">رسمي</span>
+            </div>
+            <div class="card-body">
+              <div class="card-name">المنصة الوطنية</div>
+              <div class="card-en">National Portal — my.gov.sa</div>
+            </div>
+            <div class="card-desc">تجمع جميع الأنظمة واللوائح الصادرة عن الوزارات ومجلس الوزراء في موضع واحد.</div>
+            <div class="card-tags">
+              <span class="tag">أنظمة وزارية</span>
+              <span class="tag">قرارات</span>
+              <span class="tag">لوائح</span>
+            </div>
+          </div>
+          <div class="card-ft">
+            <span class="card-url">
+              <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+              my.gov.sa/ar/rules
+            </span>
+            <a href="https://my.gov.sa/ar/rules" target="_blank" rel="noopener" class="visit">
+              زيارة الموقع
+              <svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <div class="card" data-cat="gov" data-kw="وزارة العدل أحكام قضائية تجارية سوابق مجلة عدلية قضائية">
+          <div class="card-top">
+            <div class="card-meta">
+              <div class="card-ico" style="background:#E8F5EC;">
+                <svg viewBox="0 0 24 24" fill="none" stroke="#1B4332" stroke-width="1.8"><path d="M12 2L3 7v10l9 5 9-5V7L12 2z"/><path d="M8 14l4-8 4 8"/><path d="M6 14h12"/></svg>
+              </div>
+              <span class="pill pill-gov">رسمي</span>
+            </div>
+            <div class="card-body">
+              <div class="card-name">وزارة العدل</div>
+              <div class="card-en">Ministry of Justice</div>
+            </div>
+            <div class="card-desc">الأحكام القضائية التجارية عبر مركز البحوث، ومدونات الأحكام، وأرشيف المجلة العدلية والقضائية.</div>
+            <div class="card-tags">
+              <span class="tag">أحكام قضائية</span>
+              <span class="tag">سوابق</span>
+              <span class="tag">مجلة عدلية</span>
+            </div>
+          </div>
+          <div class="card-ft">
+            <span class="card-url">
+              <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+              moj.gov.sa
+            </span>
+            <a href="https://moj.gov.sa" target="_blank" rel="noopener" class="visit">
+              زيارة الموقع
+              <svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <div class="card" data-cat="gov" data-kw="ديوان المظالم محاكم إدارية أحكام مبادئ قضائية">
+          <div class="card-top">
+            <div class="card-meta">
+              <div class="card-ico" style="background:#E8F5EC;">
+                <svg viewBox="0 0 24 24" fill="none" stroke="#1B4332" stroke-width="1.8"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+              </div>
+              <span class="pill pill-gov">رسمي</span>
+            </div>
+            <div class="card-body">
+              <div class="card-name">ديوان المظالم</div>
+              <div class="card-en">Board of Grievances</div>
+            </div>
+            <div class="card-desc">مبادئ وأحكام المحاكم الإدارية موزّعة في 11 مجموعة متخصصة. المرجع الرئيسي للنزاعات الإدارية.</div>
+            <div class="card-tags">
+              <span class="tag">أحكام إدارية</span>
+              <span class="tag">مبادئ قضائية</span>
+            </div>
+          </div>
+          <div class="card-ft">
+            <span class="card-url">
+              <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+              bog.gov.sa
+            </span>
+            <a href="https://bog.gov.sa" target="_blank" rel="noopener" class="visit">
+              زيارة الموقع
+              <svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <div class="card" data-cat="gov" data-kw="النيابة العامة قانون جنائي جزائي إجراءات جريمة">
+          <div class="card-top">
+            <div class="card-meta">
+              <div class="card-ico" style="background:#E8F5EC;">
+                <svg viewBox="0 0 24 24" fill="none" stroke="#1B4332" stroke-width="1.8"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+              </div>
+              <span class="pill pill-gov">رسمي</span>
+            </div>
+            <div class="card-body">
+              <div class="card-name">النيابة العامة</div>
+              <div class="card-en">Public Prosecution</div>
+            </div>
+            <div class="card-desc">المرجع الأساسي للأنظمة المتعلقة بالقانون الجنائي ونظام الإجراءات الجزائية.</div>
+            <div class="card-tags">
+              <span class="tag">قانون جنائي</span>
+              <span class="tag">إجراءات جزائية</span>
+            </div>
+          </div>
+          <div class="card-ft">
+            <span class="card-url">
+              <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+              pp.gov.sa
+            </span>
+            <a href="https://pp.gov.sa" target="_blank" rel="noopener" class="visit">
+              زيارة الموقع
+              <svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <div class="card" data-cat="gov" data-kw="وزارة التجارة سجلات تجارية شركات أعمال تأسيس">
+          <div class="card-top">
+            <div class="card-meta">
+              <div class="card-ico" style="background:#E8F5EC;">
+                <svg viewBox="0 0 24 24" fill="none" stroke="#1B4332" stroke-width="1.8"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/><line x1="12" y1="12" x2="12" y2="16"/><line x1="10" y1="14" x2="14" y2="14"/></svg>
+              </div>
+              <span class="pill pill-gov">رسمي</span>
+            </div>
+            <div class="card-body">
+              <div class="card-name">وزارة التجارة</div>
+              <div class="card-en">Ministry of Commerce</div>
+            </div>
+            <div class="card-desc">أنظمة ولوائح الأعمال التجارية، وخدمات السجلات التجارية وتأسيس الشركات.</div>
+            <div class="card-tags">
+              <span class="tag">أنظمة تجارية</span>
+              <span class="tag">شركات</span>
+              <span class="tag">سجلات</span>
+            </div>
+          </div>
+          <div class="card-ft">
+            <span class="card-url">
+              <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+              mc.gov.sa
+            </span>
+            <a href="https://mc.gov.sa" target="_blank" rel="noopener" class="visit">
+              زيارة الموقع
+              <svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <div class="card" data-cat="gov" data-kw="أم القرى جريدة رسمية مراسيم أوامر ملكية أنظمة جديدة">
+          <div class="card-top">
+            <div class="card-meta">
+              <div class="card-ico" style="background:#E8F5EC;">
+                <svg viewBox="0 0 24 24" fill="none" stroke="#1B4332" stroke-width="1.8"><path d="M4 22h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v16a2 2 0 0 1-2 2zm0 0a2 2 0 0 1-2-2v-9c0-1.1.9-2 2-2h2"/><path d="M18 14h-8"/><path d="M15 18h-5"/><path d="M10 6h8v4h-8V6z"/></svg>
+              </div>
+              <span class="pill pill-gov">رسمي</span>
+            </div>
+            <div class="card-body">
+              <div class="card-name">جريدة أم القرى</div>
+              <div class="card-en">Umm Al-Qura Official Gazette</div>
+            </div>
+            <div class="card-desc">الجريدة الرسمية للدولة — تُنشر فيها المراسيم والأوامر الملكية والأنظمة الجديدة عند إصدارها.</div>
+            <div class="card-tags">
+              <span class="tag">مراسيم ملكية</span>
+              <span class="tag">أوامر ملكية</span>
+              <span class="tag">جريدة رسمية</span>
+            </div>
+          </div>
+          <div class="card-ft">
+            <span class="card-url">
+              <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+              uqn.gov.sa
+            </span>
+            <a href="https://www.uqn.gov.sa" target="_blank" rel="noopener" class="visit">
+              زيارة الموقع
+              <svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+            </a>
+          </div>
+        </div>
+
+      </div><!-- /grid -->
+    </div><!-- /sec gov -->
+
+    <div class="divider"></div>
+
+    <!-- ── SECTION: PLATFORMS ── -->
+    <div id="platforms" class="sec-block" data-sec="plat">
+      <div class="sec-hd">
+        <div class="sec-hd-left">
+          <div class="sec-dot" style="background:#4037A6;"></div>
+          <div>
+            <div class="sec-title">المنصات القانونية المتخصصة</div>
+            <div class="sec-sub">منصات تجمع وتنظم الوثائق بأدوات بحث متقدمة وذكاء اصطناعي</div>
+          </div>
+        </div>
+        <span class="sec-count">5 منصات</span>
+      </div>
+
+      <div class="grid">
+
+        <div class="card" data-cat="plat" data-kw="قانونية qanoniah أنظمة لوائح تنفيذية بحث مستندات تعديلات">
+          <div class="card-top">
+            <div class="card-meta">
+              <div class="card-ico" style="background:#EEEDFE;">
+                <svg viewBox="0 0 24 24" fill="none" stroke="#4037A6" stroke-width="1.8"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+              </div>
+              <span class="pill pill-plat">منصة</span>
+            </div>
+            <div class="card-body">
+              <div class="card-name">قانونية</div>
+              <div class="card-en">Qanoniah</div>
+            </div>
+            <div class="card-desc">أكثر من 100,000 مستند قانوني سعودي مع الأنظمة ولوائحها التنفيذية وكامل تعديلاتها. إمكانية البحث داخل محتوى المستند.</div>
+            <div class="card-tags">
+              <span class="tag">+100K مستند</span>
+              <span class="tag">لوائح تنفيذية</span>
+              <span class="tag">تعديلات</span>
+            </div>
+          </div>
+          <div class="card-ft">
+            <span class="card-url">
+              <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+              qanoniah.com
+            </span>
+            <a href="https://qanoniah.com" target="_blank" rel="noopener" class="visit">
+              زيارة الموقع
+              <svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <div class="card" data-cat="plat ai" data-kw="عادل adel ذكاء اصطناعي وثائق أحكام قرارات 170000">
+          <div class="card-top">
+            <div class="card-meta">
+              <div class="card-ico" style="background:#EEEDFE;">
+                <svg viewBox="0 0 24 24" fill="none" stroke="#4037A6" stroke-width="1.8"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
+              </div>
+              <span class="pill pill-ai">AI + منصة</span>
+            </div>
+            <div class="card-body">
+              <div class="card-name">عادل</div>
+              <div class="card-en">Adel</div>
+            </div>
+            <div class="card-desc">أكثر من 170,000 وثيقة قانونية تشمل الأنظمة والأحكام والقرارات من جميع الجهات الحكومية، مدعومة بالذكاء الاصطناعي.</div>
+            <div class="card-tags">
+              <span class="tag">+170K وثيقة</span>
+              <span class="tag">ذكاء اصطناعي</span>
+              <span class="tag">أحكام</span>
+            </div>
+          </div>
+          <div class="card-ft">
+            <span class="card-url">
+              <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+              tryadel.sa
+            </span>
+            <a href="https://tryadel.sa" target="_blank" rel="noopener" class="visit">
+              زيارة الموقع
+              <svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <div class="card" data-cat="plat ai" data-kw="وثيق wthiq سوابق قضائية بحث متقدم ذكاء اصطناعي قانوني">
+          <div class="card-top">
+            <div class="card-meta">
+              <div class="card-ico" style="background:#EEEDFE;">
+                <svg viewBox="0 0 24 24" fill="none" stroke="#4037A6" stroke-width="1.8"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+              </div>
+              <span class="pill pill-ai">AI + منصة</span>
+            </div>
+            <div class="card-body">
+              <div class="card-name">وثيق</div>
+              <div class="card-en">Wthiq</div>
+            </div>
+            <div class="card-desc">منصة شاملة للوصول إلى القوانين والأنظمة والسوابق القضائية مع بحث متطور مدعوم بالذكاء الاصطناعي القانوني.</div>
+            <div class="card-tags">
+              <span class="tag">سوابق قضائية</span>
+              <span class="tag">ذكاء اصطناعي</span>
+              <span class="tag">بحث متقدم</span>
+            </div>
+          </div>
+          <div class="card-ft">
+            <span class="card-url">
+              <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+              wthiq.sa
+            </span>
+            <a href="https://wthiq.sa" target="_blank" rel="noopener" class="visit">
+              زيارة الموقع
+              <svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <div class="card" data-cat="plat" data-kw="المحامون العرب موسوعة تشريعات معاهدات دولية تعاميم 25000">
+          <div class="card-top">
+            <div class="card-meta">
+              <div class="card-ico" style="background:#EEEDFE;">
+                <svg viewBox="0 0 24 24" fill="none" stroke="#4037A6" stroke-width="1.8"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+              </div>
+              <span class="pill pill-plat">منصة</span>
+            </div>
+            <div class="card-body">
+              <div class="card-name">موسوعة المحامون العرب</div>
+              <div class="card-en">Arab Lawyers Encyclopedia</div>
+            </div>
+            <div class="card-desc">أكثر من 25,000 تشريع أساسي وفرعي مع ملفات المعاهدات الدولية وربط المواد القانونية بالأحكام القضائية.</div>
+            <div class="card-tags">
+              <span class="tag">+25K تشريع</span>
+              <span class="tag">معاهدات دولية</span>
+              <span class="tag">تعاميم</span>
+            </div>
+          </div>
+          <div class="card-ft">
+            <span class="card-url">
+              <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+              mohamoon-ksa.com
+            </span>
+            <a href="https://mohamoon-ksa.com" target="_blank" rel="noopener" class="visit">
+              زيارة الموقع
+              <svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <div class="card" data-cat="plat ai" data-kw="محاكمة mohakmh أنظمة سوابق شرح قانوني طلاب محامين">
+          <div class="card-top">
+            <div class="card-meta">
+              <div class="card-ico" style="background:#EEEDFE;">
+                <svg viewBox="0 0 24 24" fill="none" stroke="#4037A6" stroke-width="1.8"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/></svg>
+              </div>
+              <span class="pill pill-ai">AI + منصة</span>
+            </div>
+            <div class="card-body">
+              <div class="card-name">محاكمة</div>
+              <div class="card-en">Mohakmh</div>
+            </div>
+            <div class="card-desc">مرجع الأنظمة السعودية مع السوابق القضائية وشرح مبسّط للمختصين والطلاب، مدعوم بالذكاء الاصطناعي ونخبة من الخبراء.</div>
+            <div class="card-tags">
+              <span class="tag">شروحات قانونية</span>
+              <span class="tag">سوابق</span>
+              <span class="tag">ذكاء اصطناعي</span>
+            </div>
+          </div>
+          <div class="card-ft">
+            <span class="card-url">
+              <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+              mohakmh.com
+            </span>
+            <a href="https://mohakmh.com" target="_blank" rel="noopener" class="visit">
+              زيارة الموقع
+              <svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+            </a>
+          </div>
+        </div>
+
+      </div><!-- /grid -->
+    </div><!-- /sec plat -->
+
+    <!-- empty state -->
+    <div class="empty" id="empty">
+      <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+      <p>لا توجد نتائج لـ "<span id="empty-q"></span>"</p>
+      <p style="font-size:12px;margin-top:6px;color:#aaa">جرّب كلمة مختلفة</p>
+    </div>
+
+    <!-- about -->
+    <div id="about" class="about-band" style="margin-top:8px;">
+      <div class="about-icon">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+      </div>
       <div>
-        <h2>الجهات الحكومية الرسمية</h2>
-        <p>مصادر أولية موثوقة صادرة مباشرة عن الجهات التشريعية والقضائية</p>
+        <div class="about-title">عن هذا الدليل</div>
+        <p class="about-text">يهدف هذا الدليل إلى تجميع أبرز مصادر الوثائق القانونية في المملكة العربية السعودية في موضع واحد، سواء أكانت جهات حكومية رسمية أم منصات قانونية متخصصة. جميع الروابط تُحيل مباشرة إلى المواقع الرسمية دون أي وسيط. آخر تحديث: يونيو 2026.</p>
       </div>
     </div>
 
-    <div class="cards-grid">
-
-      <a href="https://laws.boe.gov.sa" target="_blank" rel="noopener noreferrer"
-         class="card featured"
-         data-name="هيئة الخبراء بمجلس الوزراء أنظمة تنظيمات ترجمات رسمية"
-         data-cat="official"
-         aria-label="زيارة موقع هيئة الخبراء بمجلس الوزراء">
-        <div class="card-head">
-          <div class="card-icon" style="background:#E6F1FB;" aria-hidden="true">📜</div>
-          <span class="badge badge-official">رسمي</span>
-        </div>
-        <div>
-          <div class="card-title">هيئة الخبراء بمجلس الوزراء</div>
-          <div class="card-en">Bureau of Experts at the Council of Ministers</div>
-        </div>
-        <div class="card-desc">المصدر الأول للأنظمة والتنظيمات وترجماتها الرسمية إلى اللغة الإنجليزية. يُعدّ المرجع المعتمد لجميع الباحثين والمختصين.</div>
-        <div class="card-tags">
-          <span class="tag">أنظمة</span>
-          <span class="tag">لوائح</span>
-          <span class="tag">ترجمة رسمية</span>
-        </div>
-        <div class="card-footer">
-          <span class="card-url">laws.boe.gov.sa</span>
-          <span class="visit-btn" aria-hidden="true">زيارة الموقع ↗</span>
-        </div>
-      </a>
-
-      <a href="https://my.gov.sa/ar/rules" target="_blank" rel="noopener noreferrer"
-         class="card"
-         data-name="المنصة الوطنية my.gov.sa أنظمة لوائح وزارات"
-         data-cat="official"
-         aria-label="زيارة المنصة الوطنية الحكومية">
-        <div class="card-head">
-          <div class="card-icon" style="background:#E1F5EE;" aria-hidden="true">🌐</div>
-          <span class="badge badge-official">رسمي</span>
-        </div>
-        <div>
-          <div class="card-title">المنصة الوطنية (my.gov.sa)</div>
-          <div class="card-en">National Portal</div>
-        </div>
-        <div class="card-desc">تجمع جميع الأنظمة واللوائح الصادرة عن الوزارات ومجلس الوزراء في موضع واحد.</div>
-        <div class="card-tags">
-          <span class="tag">أنظمة وزارية</span>
-          <span class="tag">قرارات</span>
-        </div>
-        <div class="card-footer">
-          <span class="card-url">my.gov.sa/ar/rules</span>
-          <span class="visit-btn" aria-hidden="true">زيارة الموقع ↗</span>
-        </div>
-      </a>
-
-      <a href="https://moj.gov.sa" target="_blank" rel="noopener noreferrer"
-         class="card"
-         data-name="وزارة العدل أحكام قضائية تجارية مجلة عدلية"
-         data-cat="official"
-         aria-label="زيارة موقع وزارة العدل">
-        <div class="card-head">
-          <div class="card-icon" style="background:#FAEEDA;" aria-hidden="true">⚖️</div>
-          <span class="badge badge-official">رسمي</span>
-        </div>
-        <div>
-          <div class="card-title">وزارة العدل</div>
-          <div class="card-en">Ministry of Justice</div>
-        </div>
-        <div class="card-desc">الأحكام القضائية التجارية عبر مركز البحوث، ومدونات الأحكام، وأرشيف المجلة العدلية والقضائية.</div>
-        <div class="card-tags">
-          <span class="tag">أحكام قضائية</span>
-          <span class="tag">سوابق</span>
-          <span class="tag">مجلة عدلية</span>
-        </div>
-        <div class="card-footer">
-          <span class="card-url">moj.gov.sa</span>
-          <span class="visit-btn" aria-hidden="true">زيارة الموقع ↗</span>
-        </div>
-      </a>
-
-      <a href="https://bog.gov.sa" target="_blank" rel="noopener noreferrer"
-         class="card"
-         data-name="ديوان المظالم أحكام إدارية محاكم"
-         data-cat="official"
-         aria-label="زيارة موقع ديوان المظالم">
-        <div class="card-head">
-          <div class="card-icon" style="background:#EEEDFE;" aria-hidden="true">🏢</div>
-          <span class="badge badge-official">رسمي</span>
-        </div>
-        <div>
-          <div class="card-title">ديوان المظالم</div>
-          <div class="card-en">Board of Grievances</div>
-        </div>
-        <div class="card-desc">مبادئ وأحكام المحاكم الإدارية موزّعة في 11 مجموعة متخصصة، وتُعدّ المرجع الأساسي للنزاعات الإدارية.</div>
-        <div class="card-tags">
-          <span class="tag">أحكام إدارية</span>
-          <span class="tag">مبادئ قضائية</span>
-        </div>
-        <div class="card-footer">
-          <span class="card-url">bog.gov.sa</span>
-          <span class="visit-btn" aria-hidden="true">زيارة الموقع ↗</span>
-        </div>
-      </a>
-
-      <a href="https://pp.gov.sa" target="_blank" rel="noopener noreferrer"
-         class="card"
-         data-name="النيابة العامة قانون جنائي جزائي إجراءات"
-         data-cat="official"
-         aria-label="زيارة موقع النيابة العامة">
-        <div class="card-head">
-          <div class="card-icon" style="background:#FAECE7;" aria-hidden="true">🛡️</div>
-          <span class="badge badge-official">رسمي</span>
-        </div>
-        <div>
-          <div class="card-title">النيابة العامة</div>
-          <div class="card-en">Public Prosecution</div>
-        </div>
-        <div class="card-desc">المرجع الأساسي للأنظمة المتعلقة بالقانون الجنائي ونظام الإجراءات الجزائية.</div>
-        <div class="card-tags">
-          <span class="tag">قانون جنائي</span>
-          <span class="tag">إجراءات جزائية</span>
-        </div>
-        <div class="card-footer">
-          <span class="card-url">pp.gov.sa</span>
-          <span class="visit-btn" aria-hidden="true">زيارة الموقع ↗</span>
-        </div>
-      </a>
-
-      <a href="https://mc.gov.sa" target="_blank" rel="noopener noreferrer"
-         class="card"
-         data-name="وزارة التجارة سجلات تجارية شركات أعمال"
-         data-cat="official"
-         aria-label="زيارة موقع وزارة التجارة">
-        <div class="card-head">
-          <div class="card-icon" style="background:#EAF3DE;" aria-hidden="true">💼</div>
-          <span class="badge badge-official">رسمي</span>
-        </div>
-        <div>
-          <div class="card-title">وزارة التجارة</div>
-          <div class="card-en">Ministry of Commerce</div>
-        </div>
-        <div class="card-desc">أنظمة ولوائح الأعمال التجارية، وخدمات السجلات التجارية، وتأسيس الشركات.</div>
-        <div class="card-tags">
-          <span class="tag">أنظمة تجارية</span>
-          <span class="tag">شركات</span>
-          <span class="tag">سجلات</span>
-        </div>
-        <div class="card-footer">
-          <span class="card-url">mc.gov.sa</span>
-          <span class="visit-btn" aria-hidden="true">زيارة الموقع ↗</span>
-        </div>
-      </a>
-
-      <a href="https://www.uqn.gov.sa" target="_blank" rel="noopener noreferrer"
-         class="card"
-         data-name="جريدة أم القرى مراسيم ملكية أوامر ملكية جريدة رسمية"
-         data-cat="official"
-         aria-label="زيارة موقع جريدة أم القرى">
-        <div class="card-head">
-          <div class="card-icon" style="background:#E6F1FB;" aria-hidden="true">📰</div>
-          <span class="badge badge-official">رسمي</span>
-        </div>
-        <div>
-          <div class="card-title">جريدة أم القرى</div>
-          <div class="card-en">Umm Al-Qura Gazette</div>
-        </div>
-        <div class="card-desc">الجريدة الرسمية للدولة — يُنشر فيها المراسيم والأوامر الملكية والأنظمة الجديدة عند إصدارها.</div>
-        <div class="card-tags">
-          <span class="tag">مراسيم ملكية</span>
-          <span class="tag">أوامر ملكية</span>
-          <span class="tag">جريدة رسمية</span>
-        </div>
-        <div class="card-footer">
-          <span class="card-url">uqn.gov.sa</span>
-          <span class="visit-btn" aria-hidden="true">زيارة الموقع ↗</span>
-        </div>
-      </a>
-
-    </div>
   </div>
-
-  <div class="divider"></div>
-
-  <!-- ── SECTION 2: Platforms ── -->
-  <div id="platforms" class="card-section" data-section="platforms">
-    <div class="section-head">
-      <div class="section-icon" style="background:#EEEDFE; color:#4037A6;" aria-hidden="true">💻</div>
-      <div>
-        <h2>المنصات القانونية المتخصصة</h2>
-        <p>منصات تجمع وتنظم الوثائق مع أدوات بحث متقدمة وذكاء اصطناعي</p>
-      </div>
-    </div>
-
-    <div class="cards-grid">
-
-      <a href="https://qanoniah.com" target="_blank" rel="noopener noreferrer"
-         class="card"
-         data-name="قانونية qanoniah أنظمة لوائح تنفيذية بحث مستندات"
-         data-cat="platform"
-         aria-label="زيارة منصة قانونية">
-        <div class="card-head">
-          <div class="card-icon" style="background:#EEEDFE;" aria-hidden="true">🔍</div>
-          <span class="badge badge-platform">منصة</span>
-        </div>
-        <div>
-          <div class="card-title">قانونية</div>
-          <div class="card-en">Qanoniah</div>
-        </div>
-        <div class="card-desc">أكثر من 100,000 مستند قانوني سعودي. تجمع الأنظمة مع لوائحها التنفيذية وكامل تعديلاتها مع إمكانية البحث في المحتوى.</div>
-        <div class="card-tags">
-          <span class="tag">+100K مستند</span>
-          <span class="tag">أنظمة</span>
-          <span class="tag">لوائح تنفيذية</span>
-        </div>
-        <div class="card-footer">
-          <span class="card-url">qanoniah.com</span>
-          <span class="visit-btn" aria-hidden="true">زيارة الموقع ↗</span>
-        </div>
-      </a>
-
-      <a href="https://tryadel.sa" target="_blank" rel="noopener noreferrer"
-         class="card featured"
-         data-name="عادل adel ذكاء اصطناعي وثائق أحكام قرارات"
-         data-cat="platform ai"
-         aria-label="زيارة منصة عادل">
-        <div class="card-head">
-          <div class="card-icon" style="background:#E1F5EE;" aria-hidden="true">🤖</div>
-          <span class="badge badge-ai">AI • منصة</span>
-        </div>
-        <div>
-          <div class="card-title">عادل</div>
-          <div class="card-en">Adel</div>
-        </div>
-        <div class="card-desc">أكثر من 170,000 وثيقة قانونية تشمل الأنظمة واللوائح والأحكام والقرارات التنظيمية من جميع الجهات الحكومية، مدعومة بالذكاء الاصطناعي.</div>
-        <div class="card-tags">
-          <span class="tag">+170K وثيقة</span>
-          <span class="tag">ذكاء اصطناعي</span>
-          <span class="tag">أحكام</span>
-        </div>
-        <div class="card-footer">
-          <span class="card-url">tryadel.sa</span>
-          <span class="visit-btn" aria-hidden="true">زيارة الموقع ↗</span>
-        </div>
-      </a>
-
-      <a href="https://wthiq.sa" target="_blank" rel="noopener noreferrer"
-         class="card"
-         data-name="وثيق wthiq سوابق قضائية بحث ذكاء اصطناعي"
-         data-cat="platform ai"
-         aria-label="زيارة منصة وثيق">
-        <div class="card-head">
-          <div class="card-icon" style="background:#FAEEDA;" aria-hidden="true">📚</div>
-          <span class="badge badge-ai">AI • منصة</span>
-        </div>
-        <div>
-          <div class="card-title">وثيق</div>
-          <div class="card-en">Wthiq</div>
-        </div>
-        <div class="card-desc">منصة شاملة للوصول إلى القوانين والأنظمة والسوابق القضائية مع بحث متطور مدعوم بالذكاء الاصطناعي القانوني.</div>
-        <div class="card-tags">
-          <span class="tag">سوابق قضائية</span>
-          <span class="tag">ذكاء اصطناعي</span>
-          <span class="tag">بحث متقدم</span>
-        </div>
-        <div class="card-footer">
-          <span class="card-url">wthiq.sa</span>
-          <span class="visit-btn" aria-hidden="true">زيارة الموقع ↗</span>
-        </div>
-      </a>
-
-      <a href="https://mohamoon-ksa.com" target="_blank" rel="noopener noreferrer"
-         class="card"
-         data-name="موسوعة المحامون العرب تشريعات معاهدات دولية"
-         data-cat="platform"
-         aria-label="زيارة موسوعة المحامون العرب">
-        <div class="card-head">
-          <div class="card-icon" style="background:#FAECE7;" aria-hidden="true">📖</div>
-          <span class="badge badge-platform">منصة</span>
-        </div>
-        <div>
-          <div class="card-title">موسوعة المحامون العرب</div>
-          <div class="card-en">Arab Lawyers Encyclopedia</div>
-        </div>
-        <div class="card-desc">أكثر من 25,000 تشريع أساسي وفرعي مع ملفات المعاهدات الدولية التي وقّعت عليها المملكة وربط المواد بالأحكام القضائية.</div>
-        <div class="card-tags">
-          <span class="tag">+25K تشريع</span>
-          <span class="tag">معاهدات دولية</span>
-          <span class="tag">تعاميم</span>
-        </div>
-        <div class="card-footer">
-          <span class="card-url">mohamoon-ksa.com</span>
-          <span class="visit-btn" aria-hidden="true">زيارة الموقع ↗</span>
-        </div>
-      </a>
-
-      <a href="https://mohakmh.com" target="_blank" rel="noopener noreferrer"
-         class="card"
-         data-name="محاكمة mohakmh أنظمة سوابق شرح قانوني طلاب"
-         data-cat="platform ai"
-         aria-label="زيارة منصة محاكمة">
-        <div class="card-head">
-          <div class="card-icon" style="background:#EAF3DE;" aria-hidden="true">🏛️</div>
-          <span class="badge badge-ai">AI • منصة</span>
-        </div>
-        <div>
-          <div class="card-title">محاكمة</div>
-          <div class="card-en">Mohakmh</div>
-        </div>
-        <div class="card-desc">مرجع الأنظمة السعودية مع السوابق القضائية وشرح مبسّط للمختصين والطلاب، بمساعدة نخبة من الخبراء ودعم الذكاء الاصطناعي.</div>
-        <div class="card-tags">
-          <span class="tag">شروحات قانونية</span>
-          <span class="tag">سوابق</span>
-          <span class="tag">ذكاء اصطناعي</span>
-        </div>
-        <div class="card-footer">
-          <span class="card-url">mohakmh.com</span>
-          <span class="visit-btn" aria-hidden="true">زيارة الموقع ↗</span>
-        </div>
-      </a>
-
-    </div>
-  </div>
-
-  <!-- No results message -->
-  <div id="no-results" role="status" aria-live="polite">
-    <p style="font-size:32px;margin-bottom:12px">🔍</p>
-    <p>لا توجد نتائج للبحث عن "<span id="no-results-term"></span>"</p>
-    <p style="font-size:12px;margin-top:6px">جرّب كلمة مختلفة</p>
-  </div>
-
-  <!-- About -->
-  <div id="about" style="background:var(--white);border:1px solid var(--border);border-radius:14px;padding:28px 32px;margin-top:8px">
-    <h2 style="font-size:15px;font-weight:600;color:var(--navy);margin-bottom:10px">عن هذا الدليل</h2>
-    <p style="font-size:13px;color:var(--muted);line-height:1.8;max-width:680px">
-      يهدف هذا الدليل إلى تجميع أبرز مصادر الوثائق القانونية في المملكة العربية السعودية في موضع واحد، سواء أكانت جهات حكومية رسمية أم منصات قانونية متخصصة. جميع الروابط تُحيل مباشرة إلى المواقع الرسمية دون أي وسيط. آخر تحديث: يونيو 2026.
-    </p>
-  </div>
-
 </main>
 
-<!-- ══════════════════ FOOTER ══════════════════ -->
-<footer class="site-footer" role="contentinfo">
-  <p>
-    <strong>مصادر قانونية — المملكة العربية السعودية</strong> &nbsp;|&nbsp;
-    دليل المراجع التشريعية والقضائية &nbsp;|&nbsp; آخر تحديث: يونيو 2026
-  </p>
-  <p style="margin-top:6px;font-size:11px">جميع الروابط تُحيل إلى المواقع الرسمية. هذا الدليل لأغراض إرشادية فقط.</p>
+<!-- ════════ FOOTER ════════ -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-logo">
+        <div class="logo-icon" style="width:34px;height:34px;">
+          <svg viewBox="0 0 24 24" style="width:18px;height:18px;" fill="white"><path d="M12 2L3 7v10l9 5 9-5V7L12 2zM12 17l-5-2.8V9.8L12 12l5-2.2v4.4L12 17z"/></svg>
+        </div>
+        <div>
+          <div class="footer-logo-name">دليل المصادر القانونية</div>
+          <div class="footer-logo-sub">المملكة العربية السعودية — 2026</div>
+        </div>
+      </div>
+      <div class="footer-copy">
+        جميع الروابط تُحيل إلى مواقعها الرسمية<br/>
+        <strong>للأغراض الإرشادية فقط</strong>
+      </div>
+    </div>
+  </div>
 </footer>
 
-<!-- ══════════════════ JS ══════════════════ -->
+<!-- ════════ JS ════════ -->
 <script>
-  let activeTab = 'all';
+  let activeCat = 'all';
 
-  function setTab(el, cat) {
-    document.querySelectorAll('.tab').forEach(t => {
-      t.classList.remove('active');
-      t.setAttribute('aria-pressed', 'false');
-    });
-    el.classList.add('active');
-    el.setAttribute('aria-pressed', 'true');
-    activeTab = cat;
-    applyFilters(document.getElementById('search-input').value);
+  function tab(el, cat) {
+    document.querySelectorAll('.chip').forEach(c => c.classList.remove('on'));
+    el.classList.add('on');
+    activeCat = cat;
+    apply();
   }
 
-  function filterAll(query) {
-    applyFilters(query);
+  function run() {
+    apply();
   }
 
-  function applyFilters(query) {
-    const q = query.trim().toLowerCase();
-    let anyVisible = false;
+  function apply() {
+    const q = document.getElementById('q').value.trim().toLowerCase();
+    let total = 0;
 
     document.querySelectorAll('.card').forEach(card => {
-      const name = (card.dataset.name || '').toLowerCase();
-      const cat  = (card.dataset.cat  || '');
-      const matchesSearch = !q || name.includes(q);
-      const matchesTab    = activeTab === 'all' || cat.includes(activeTab);
-      const show = matchesSearch && matchesTab;
-      card.classList.toggle('hidden', !show);
-      if (show) anyVisible = true;
+      const kw  = (card.dataset.kw  || '').toLowerCase();
+      const cat = (card.dataset.cat || '');
+      const matchQ   = !q || kw.includes(q);
+      const matchCat = activeCat === 'all' || cat.includes(activeCat);
+      const show = matchQ && matchCat;
+      card.classList.toggle('hide', !show);
+      if (show) total++;
     });
 
-    // show/hide sections based on whether they have visible cards
-    document.querySelectorAll('.card-section').forEach(section => {
-      const hasVisible = [...section.querySelectorAll('.card')].some(c => !c.classList.contains('hidden'));
-      section.classList.toggle('hidden', !hasVisible);
+    // show/hide sections
+    document.querySelectorAll('.sec-block').forEach(sec => {
+      const hasSec = activeCat === 'all' || sec.dataset.sec === activeCat;
+      const hasCards = [...sec.querySelectorAll('.card')].some(c => !c.classList.contains('hide'));
+      sec.classList.toggle('hide', !hasSec || !hasCards);
     });
 
-    const noResults = document.getElementById('no-results');
-    if (!anyVisible) {
-      noResults.style.display = 'block';
-      document.getElementById('no-results-term').textContent = query;
-    } else {
-      noResults.style.display = 'none';
-    }
+    // divider — hide if platforms section hidden
+    const platHidden = document.querySelector('[data-sec="plat"]').classList.contains('hide');
+    document.querySelector('.divider').style.display = platHidden ? 'none' : '';
+
+    // empty state
+    const empty = document.getElementById('empty');
+    empty.style.display = total === 0 ? 'block' : 'none';
+    if (total === 0) document.getElementById('empty-q').textContent = q;
   }
 </script>
 
