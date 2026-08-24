@@ -13,6 +13,14 @@
     }[c]));
   }
 
+  function formatResultCount(n) {
+    if (n === 0) return "لا توجد مصادر";
+    if (n === 1) return "مصدر واحد";
+    if (n === 2) return "مصدران";
+    if (n >= 3 && n <= 10) return `${n} مصادر`;
+    return `${n} مصدرًا`;
+  }
+
   function matches(resource, query) {
     if (!query) return true;
     const haystack = `${resource.name} ${resource.desc} ${resource.domain}`.toLowerCase();
@@ -67,9 +75,7 @@
       sectionsEl.appendChild(section);
     });
 
-    resultCountEl.textContent = totalShown === 1
-      ? "مصدر واحد"
-      : `${totalShown} مصادر`;
+    resultCountEl.textContent = formatResultCount(totalShown);
     noResultsEl.hidden = totalShown !== 0;
   }
 
