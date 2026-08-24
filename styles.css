@@ -237,9 +237,51 @@ body {
 
 .card-row {
   display: flex;
-  align-items: baseline;
+  align-items: center;
   justify-content: space-between;
   gap: 16px;
+}
+
+.card-heading {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+}
+
+.card-icon-wrap {
+  position: relative;
+  flex: none;
+  width: 26px;
+  height: 26px;
+}
+
+.card-icon,
+.card-icon-fallback {
+  width: 26px;
+  height: 26px;
+  border-radius: 7px;
+}
+
+.card-icon {
+  position: absolute;
+  inset: 0;
+  object-fit: contain;
+  background: var(--surface);
+  border: 1px solid var(--line-soft);
+  padding: 3px;
+}
+
+.card-icon-fallback {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--green-800);
+  background: var(--green-tint);
+  border: 1px solid var(--line-soft);
 }
 
 .card-name {
