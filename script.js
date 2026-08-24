@@ -13,6 +13,14 @@
     }[c]));
   }
 
+  function formatResultCount(n) {
+    if (n === 0) return "لا توجد مصادر";
+    if (n === 1) return "مصدر واحد";
+    if (n === 2) return "مصدران";
+    if (n >= 3 && n <= 10) return `${n} مصادر`;
+    return `${n} مصدرًا`;
+  }
+
   function matches(resource, query) {
     if (!query) return true;
     const haystack = `${resource.name} ${resource.desc} ${resource.domain}`.toLowerCase();
@@ -48,10 +56,25 @@
 
       items.forEach((r) => {
         const li = document.createElement("li");
+        const initial = escapeHtml(r.name.trim().charAt(0));
+        const faviconUrl = `https://www.google.com/s2/favicons?sz=64&domain=${encodeURIComponent(r.domain)}`;
         li.innerHTML = `
           <a class="card" href="${escapeHtml(r.url)}" target="_blank" rel="noopener noreferrer">
             <div class="card-row">
-              <span class="card-name">${escapeHtml(r.name)}</span>
+              <div class="card-heading">
+                <span class="card-icon-wrap">
+                  <span class="card-icon-fallback">${initial}</span>
+                  <img
+                    class="card-icon"
+                    src="${faviconUrl}"
+                    alt=""
+                    loading="lazy"
+                    onload="this.previousElementSibling.hidden = true"
+                    onerror="this.remove()"
+                  />
+                </span>
+                <span class="card-name">${escapeHtml(r.name)}</span>
+              </div>
               <span class="card-domain" dir="ltr">${escapeHtml(r.domain)}</span>
             </div>
             <p class="card-desc">${escapeHtml(r.desc)}</p>
@@ -67,9 +90,7 @@
       sectionsEl.appendChild(section);
     });
 
-    resultCountEl.textContent = totalShown === 1
-      ? "مصدر واحد"
-      : `${totalShown} مصادر`;
+    resultCountEl.textContent = formatResultCount(totalShown);
     noResultsEl.hidden = totalShown !== 0;
   }
 
