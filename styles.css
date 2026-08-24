@@ -13,8 +13,8 @@
   --accent-soft: #eef4ee;
   --badge: #8a6d1a;
   --badge-bg: #fbf4e2;
-  --font-serif: Georgia, "Iowan Old Style", "Palatino Linotype", serif;
-  --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+  --font-serif: "Tajawal", "Segoe UI", Tahoma, sans-serif;
+  --font-sans: "Tajawal", -apple-system, BlinkMacSystemFont, "Segoe UI", Tahoma, sans-serif;
   --radius: 6px;
 }
 
@@ -175,7 +175,7 @@ body {
 
 .card-name {
   font-size: 16px;
-  font-weight: 600;
+  font-weight: 700;
   color: var(--ink);
 }
 

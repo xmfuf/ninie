@@ -52,11 +52,11 @@
           <a class="card" href="${escapeHtml(r.url)}" target="_blank" rel="noopener noreferrer">
             <div class="card-row">
               <span class="card-name">${escapeHtml(r.name)}</span>
-              <span class="card-domain">${escapeHtml(r.domain)}</span>
+              <span class="card-domain" dir="ltr">${escapeHtml(r.domain)}</span>
             </div>
             <p class="card-desc">${escapeHtml(r.desc)}</p>
             <div class="card-meta">
-              <span class="verified-badge">Last verified: ${escapeHtml(r.verified)}</span>
+              <span class="verified-badge">آخر تحقق: ${escapeHtml(r.verified)}</span>
             </div>
           </a>
         `;
@@ -68,8 +68,8 @@
     });
 
     resultCountEl.textContent = totalShown === 1
-      ? "1 resource"
-      : `${totalShown} resources`;
+      ? "مصدر واحد"
+      : `${totalShown} مصادر`;
     noResultsEl.hidden = totalShown !== 0;
   }
 
