@@ -1,0 +1,244 @@
+/* ==========================================================================
+   Tokens
+   ========================================================================== */
+:root {
+  --ink: #16181d;
+  --ink-2: #4a4f58;
+  --ink-3: #767c88;
+  --line: #dfe2e8;
+  --line-soft: #eceff3;
+  --bg: #ffffff;
+  --bg-soft: #f7f8fa;
+  --accent: #14532d;
+  --accent-soft: #eef4ee;
+  --badge: #8a6d1a;
+  --badge-bg: #fbf4e2;
+  --font-serif: Georgia, "Iowan Old Style", "Palatino Linotype", serif;
+  --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+  --radius: 6px;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --ink: #eceef1;
+    --ink-2: #c2c7d1;
+    --ink-3: #8a909c;
+    --line: #2c3038;
+    --line-soft: #23262d;
+    --bg: #14151a;
+    --bg-soft: #1b1d23;
+    --accent: #7fbf9b;
+    --accent-soft: #1c2620;
+    --badge: #d8b95c;
+    --badge-bg: #2a2417;
+  }
+}
+
+* { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  font-family: var(--font-sans);
+  color: var(--ink);
+  background: var(--bg);
+  line-height: 1.5;
+}
+
+.wrap {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* ==========================================================================
+   Header
+   ========================================================================== */
+.site-header {
+  border-bottom: 1px solid var(--line);
+  padding: 56px 0 32px;
+}
+
+.site-title {
+  font-family: var(--font-serif);
+  font-size: 34px;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  margin: 0 0 10px;
+}
+
+.site-sub {
+  font-size: 16px;
+  color: var(--ink-2);
+  max-width: 56ch;
+  margin: 0;
+}
+
+/* ==========================================================================
+   Controls
+   ========================================================================== */
+.controls {
+  padding: 32px 0 8px;
+}
+
+.search-input {
+  width: 100%;
+  font-family: var(--font-sans);
+  font-size: 16px;
+  padding: 12px 14px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--bg-soft);
+  color: var(--ink);
+}
+
+.search-input:focus {
+  outline: none;
+  border-color: var(--accent);
+  background: var(--bg);
+}
+
+.filter-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 14px;
+}
+
+.filter-btn {
+  font-family: var(--font-sans);
+  font-size: 13px;
+  color: var(--ink-2);
+  background: var(--bg);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 7px 14px;
+  cursor: pointer;
+}
+
+.filter-btn:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.filter-btn.is-active {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
+}
+
+.result-count {
+  font-size: 13px;
+  color: var(--ink-3);
+  margin: 18px 0 0;
+}
+
+/* ==========================================================================
+   Sections & cards
+   ========================================================================== */
+.section {
+  margin-top: 40px;
+}
+
+.section-title {
+  font-family: var(--font-serif);
+  font-size: 21px;
+  font-weight: 400;
+  margin: 0 0 4px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--line);
+}
+
+.card-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.card {
+  display: block;
+  padding: 18px 0;
+  border-bottom: 1px solid var(--line-soft);
+  text-decoration: none;
+  color: inherit;
+}
+
+.card:last-child { border-bottom: none; }
+
+.card-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.card-name {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.card:hover .card-name {
+  color: var(--accent);
+  text-decoration: underline;
+}
+
+.card-domain {
+  font-size: 13px;
+  color: var(--ink-3);
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+}
+
+.card-desc {
+  font-size: 14px;
+  color: var(--ink-2);
+  margin: 5px 0 0;
+  max-width: 68ch;
+}
+
+.card-meta {
+  margin-top: 9px;
+}
+
+.verified-badge {
+  display: inline-block;
+  font-size: 11.5px;
+  letter-spacing: 0.02em;
+  color: var(--badge);
+  background: var(--badge-bg);
+  border-radius: 4px;
+  padding: 3px 8px;
+}
+
+.no-results {
+  color: var(--ink-3);
+  padding: 40px 0;
+  text-align: center;
+}
+
+/* ==========================================================================
+   Footer
+   ========================================================================== */
+.site-footer {
+  border-top: 1px solid var(--line);
+  margin-top: 64px;
+  padding: 28px 0 56px;
+}
+
+.site-footer p {
+  font-size: 13px;
+  color: var(--ink-3);
+  max-width: 68ch;
+  margin: 0;
+}
+
+/* ==========================================================================
+   Responsive
+   ========================================================================== */
+@media (max-width: 520px) {
+  .site-header { padding: 40px 0 24px; }
+  .site-title { font-size: 28px; }
+  .card-row { flex-direction: column; gap: 2px; }
+}
