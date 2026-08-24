@@ -7,6 +7,16 @@
 
   let activeCategory = "all";
 
+  const ARABIC_DIGITS = ["٠", "١", "٢", "٣", "٤", "٥", "٦", "٧", "٨", "٩"];
+
+  function toArabicDigits(n) {
+    return String(n).replace(/[0-9]/g, (d) => ARABIC_DIGITS[d]);
+  }
+
+  function chapterNumber(n) {
+    return toArabicDigits(String(n).padStart(2, "0"));
+  }
+
   function escapeHtml(str) {
     return str.replace(/[&<>"']/g, (c) => ({
       "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;",
@@ -43,44 +53,37 @@
       if (items.length === 0) return;
       totalShown += items.length;
 
+      const chapterIndex = CATEGORIES.findIndex((c) => c.id === cat.id) + 1;
+
       const section = document.createElement("section");
       section.className = "section";
 
-      const heading = document.createElement("h2");
-      heading.className = "section-title";
-      heading.textContent = cat.label;
-      section.appendChild(heading);
+      const head = document.createElement("div");
+      head.className = "section-head";
+      head.innerHTML = `
+        <span class="section-num serial">${chapterNumber(chapterIndex)}</span>
+        <span class="section-title">${escapeHtml(cat.label)}</span>
+        <span class="section-rule"></span>
+      `;
+      section.appendChild(head);
 
       const list = document.createElement("ul");
-      list.className = "card-list";
+      list.className = "entry-list";
 
-      items.forEach((r) => {
+      items.forEach((r, i) => {
         const li = document.createElement("li");
-        const initial = escapeHtml(r.name.trim().charAt(0));
-        const faviconUrl = `https://www.google.com/s2/favicons?sz=64&domain=${encodeURIComponent(r.domain)}`;
+        li.className = "entry";
         li.innerHTML = `
-          <a class="card" href="${escapeHtml(r.url)}" target="_blank" rel="noopener noreferrer">
-            <div class="card-row">
-              <div class="card-heading">
-                <span class="card-icon-wrap">
-                  <span class="card-icon-fallback">${initial}</span>
-                  <img
-                    class="card-icon"
-                    src="${faviconUrl}"
-                    alt=""
-                    loading="lazy"
-                    onload="this.previousElementSibling.hidden = true"
-                    onerror="this.remove()"
-                  />
-                </span>
-                <span class="card-name">${escapeHtml(r.name)}</span>
-              </div>
-              <span class="card-domain" dir="ltr">${escapeHtml(r.domain)}</span>
-            </div>
-            <p class="card-desc">${escapeHtml(r.desc)}</p>
-            <div class="card-meta">
-              <span class="verified-badge">آخر تحقق: ${escapeHtml(r.verified)}</span>
-            </div>
+          <a class="entry-row" href="${escapeHtml(r.url)}" target="_blank" rel="noopener noreferrer">
+            <span class="entry-num serial">${toArabicDigits(i + 1)}</span>
+            <span class="entry-body">
+              <span class="entry-top">
+                <span class="entry-name">${escapeHtml(r.name)}</span>
+                <span class="entry-domain" dir="ltr">${escapeHtml(r.domain)}</span>
+              </span>
+              <p class="entry-desc">${escapeHtml(r.desc)}</p>
+              <span class="entry-verified">آخر تحقق: ${escapeHtml(r.verified)}</span>
+            </span>
           </a>
         `;
         list.appendChild(li);

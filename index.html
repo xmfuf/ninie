@@ -4,18 +4,34 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>دليل المصادر القانونية السعودية</title>
-<meta name="description" content="دليل يجمع المصادر القانونية الرسمية في المملكة العربية السعودية، ويحيل مباشرة إلى المواقع الرسمية لكل جهة." />
+<meta name="description" content="سجلّ يجمع المصادر القانونية الرسمية في المملكة العربية السعودية، ويحيل مباشرة إلى المواقع الرسمية لكل جهة." />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Reem+Kufi:wght@400;500;600;700&family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Aref+Ruqaa:wght@400;700&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
 
 <header class="site-header">
   <div class="wrap header-inner">
-    <span class="site-kicker">دليل موثّق لمصادر النظام في المملكة</span>
+    <svg class="seal-mark" width="38" height="38" viewBox="0 0 38 38" fill="none" aria-hidden="true">
+      <circle cx="19" cy="19" r="17" stroke="currentColor" stroke-width="1.2"/>
+      <circle cx="19" cy="19" r="11" stroke="currentColor" stroke-width="1"/>
+      <circle cx="19" cy="19" r="2" fill="currentColor" class="seal-dot"/>
+      <g stroke="currentColor" stroke-width="1">
+        <line x1="19" y1="1" x2="19" y2="6"/>
+        <line x1="19" y1="32" x2="19" y2="37"/>
+        <line x1="1" y1="19" x2="6" y2="19"/>
+        <line x1="32" y1="19" x2="37" y2="19"/>
+        <line x1="6.5" y1="6.5" x2="10" y2="10"/>
+        <line x1="28" y1="28" x2="31.5" y2="31.5"/>
+        <line x1="31.5" y1="6.5" x2="28" y2="10"/>
+        <line x1="10" y1="28" x2="6.5" y2="31.5"/>
+      </g>
+    </svg>
+    <span class="site-kicker">سجلّ المصادر القانونية الرسمية</span>
     <h1 class="site-title">دليل المصادر القانونية السعودية</h1>
+    <div class="title-rule"></div>
     <p class="site-sub">دليل يجمع المصادر القانونية الرسمية في المملكة العربية السعودية — كل رابط يحيلك مباشرة إلى الموقع الرسمي للجهة المعنية.</p>
   </div>
 </header>
@@ -37,9 +53,8 @@
       <button class="filter-btn" data-cat="agencies">الجهات الرسمية والهيئات المهنية</button>
       <button class="filter-btn" data-cat="forms">النماذج والصيغ القانونية</button>
     </div>
+    <p class="result-count" id="resultCount"></p>
   </div>
-
-  <p class="result-count" id="resultCount"></p>
 
   <div id="sections"></div>
 
